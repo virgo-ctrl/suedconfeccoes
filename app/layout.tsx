@@ -2,14 +2,59 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import { CartProvider } from '@/lib/cart-context'
+import { SITE_URL } from '@/lib/constants'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const TITLE = 'Sued Confecções | Bermudas Masculinas no Atacado'
+const DESCRIPTION =
+  'Confecção especializada em bermudas masculinas premium direto de Caruaru. Preço de fábrica, modelos exclusivos e entrega para todo o Brasil.'
+
 export const metadata: Metadata = {
-  title: 'Sued Confecções | Bermudas Masculinas no Atacado',
-  description:
-    'Confecção especializada em bermudas masculinas premium direto de Caruaru. Preço de fábrica, modelos exclusivos e entrega para todo o Brasil.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: '%s | Sued Confecções',
+  },
+  description: DESCRIPTION,
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: 'Sued Confecções',
+    locale: 'pt_BR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+}
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ClothingStore',
+  name: 'Sued Confecções',
+  description: DESCRIPTION,
+  url: SITE_URL,
+  logo: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sued%20-%20Logo%20Dourada-Bpqaa0NwlaxoSfXEerwKowCUAC8fim.png',
+  image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sued%20-%20Logo%20Dourada-Bpqaa0NwlaxoSfXEerwKowCUAC8fim.png',
+  telephone: '+5581973175562',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Caruaru',
+    addressRegion: 'PE',
+    addressCountry: 'BR',
+  },
 }
 
 export const viewport: Viewport = {
@@ -27,6 +72,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="bg-background">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         {/* Meta Pixel Code */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`

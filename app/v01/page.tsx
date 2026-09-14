@@ -1,7 +1,16 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import { LeadForm } from '@/components/lead-form'
 import { ScrollToTopBtn } from '@/components/scroll-to-top-btn'
 import { CheckCircle2, Package, Truck, Star } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Receba o Catálogo no WhatsApp (versão anterior)',
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default function Home() {
   return (

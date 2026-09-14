@@ -1,6 +1,15 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle2, MessageCircle } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Pedido Enviado',
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default function PedidoEnviado() {
   return (

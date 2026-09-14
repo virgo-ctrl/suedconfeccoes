@@ -1,13 +1,65 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Factory, MapPinned, PackageCheck, Shirt } from 'lucide-react'
 import { products } from '@/lib/products'
-import { PEDIDO_MINIMO_VALOR } from '@/lib/constants'
+import { PEDIDO_MINIMO_VALOR, SITE_URL } from '@/lib/constants'
 import { ProductCard } from '@/components/product-card'
 import { CartButton, CartDrawer } from '@/components/cart-widget'
+
+const TITLE = 'Catálogo de Bermudas no Atacado'
+const DESCRIPTION =
+  `Catálogo de bermudas masculinas direto da fábrica em Caruaru-PE. Fabricação própria, pedido mínimo de R$ ${PEDIDO_MINIMO_VALOR}, entrega pra todo o Brasil.`
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+  },
+  twitter: {
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+}
+
+const productsJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: products.map((product, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: product.nome,
+      description: product.descricao,
+      image: `${SITE_URL}${product.imagens[0]}`,
+      brand: {
+        '@type': 'Brand',
+        name: 'Sued Confecções',
+      },
+      offers: {
+        '@type': 'Offer',
+        url: SITE_URL,
+        priceCurrency: 'BRL',
+        price: product.preco,
+        availability: 'https://schema.org/InStock',
+      },
+    },
+  })),
+}
 
 export default function Catalogo() {
   return (
     <main className="theme-cream min-h-screen bg-background text-foreground font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productsJsonLd) }}
+      />
       {/* ── HEADER ── */}
       <header className="py-5 px-6 flex items-center justify-between border-b border-border sticky top-0 bg-background/95 backdrop-blur z-30">
         <Image
