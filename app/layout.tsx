@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
+import { CartProvider } from '@/lib/cart-context'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -53,7 +54,9 @@ export default function RootLayout({
         </noscript>
         {/* End Meta Pixel Code */}
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   )
 }

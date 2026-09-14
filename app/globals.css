@@ -22,6 +22,7 @@
   --color-ring: var(--ring);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
+  --color-gold-foreground: var(--gold-foreground);
   --color-destructive: var(--destructive);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -50,8 +51,31 @@
   --ring: oklch(0.75 0.12 80);
   --gold: oklch(0.75 0.12 80);
   --gold-light: oklch(0.85 0.10 80);
+  --gold-foreground: oklch(0.12 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --radius: 0.5rem;
+}
+
+/* Tema claro (creme) — usado só no catálogo (/), o resto do site continua escuro */
+.theme-cream {
+  color-scheme: light;
+  --background: oklch(0.95 0.02 85);
+  --foreground: oklch(0.16 0.01 60);
+  --card: oklch(0.995 0.004 85);
+  --card-foreground: oklch(0.16 0.01 60);
+  --primary: oklch(0.52 0.14 75);
+  --primary-foreground: oklch(0.12 0 0);
+  --secondary: oklch(0.91 0.02 85);
+  --secondary-foreground: oklch(0.16 0.01 60);
+  --muted: oklch(0.91 0.02 85);
+  --muted-foreground: oklch(0.42 0.015 60);
+  --accent: oklch(0.52 0.14 75);
+  --accent-foreground: oklch(0.12 0 0);
+  --border: oklch(0.85 0.02 80);
+  --input: oklch(0.91 0.02 85);
+  --ring: oklch(0.52 0.14 75);
+  --gold: oklch(0.52 0.14 75);
+  --gold-light: oklch(0.6 0.13 75);
 }
 
 @layer base {
@@ -61,4 +85,23 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Barra de rolagem fina, discreta, nas miniaturas de foto do catálogo */
+.thumb-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.thumb-scroll::-webkit-scrollbar {
+  height: 5px;
+}
+.thumb-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.thumb-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 9999px;
+}
+.thumb-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gold);
 }
