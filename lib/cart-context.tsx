@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { fireFbq } from '@/lib/pixel'
 import { getProduct } from '@/lib/products'
-import { PEDIDO_MINIMO } from '@/lib/constants'
+import { PEDIDO_MINIMO_VALOR } from '@/lib/constants'
 
 export type CartItem = {
   id: string
@@ -27,7 +27,7 @@ type CartContextValue = {
   clearCart: () => void
   totalItens: number
   totalValor: number
-  pedidoMinimo: number
+  pedidoMinimoValor: number
 }
 
 const CartContext = createContext<CartContextValue | null>(null)
@@ -124,7 +124,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     clearCart,
     totalItens,
     totalValor,
-    pedidoMinimo: PEDIDO_MINIMO,
+    pedidoMinimoValor: PEDIDO_MINIMO_VALOR,
   }
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>

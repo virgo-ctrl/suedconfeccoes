@@ -36,7 +36,7 @@ export const products: Product[] = [
     nome: 'Bermuda Sarja Tradicional',
     descricao: 'Bermuda de sarja masculina, corte clássico, ótimo giro em loja.',
     composicao: '100% algodão',
-    preco: 27,
+    preco: 28,
     precoAntigo: 30,
     tamanhos: ['38', '40', '42', '44', '46'],
     cores: ['Caqui', 'Bege', 'Preto', 'Verde militar', 'Azul marinho', 'Vinho'],

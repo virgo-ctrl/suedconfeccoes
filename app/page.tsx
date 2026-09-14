@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Factory, MapPinned, PackageCheck, Shirt } from 'lucide-react'
 import { products } from '@/lib/products'
-import { PEDIDO_MINIMO } from '@/lib/constants'
+import { PEDIDO_MINIMO_VALOR } from '@/lib/constants'
 import { ProductCard } from '@/components/product-card'
 import { CartButton, CartDrawer } from '@/components/cart-widget'
 
@@ -30,7 +30,7 @@ export default function Catalogo() {
           </h1>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 w-full max-w-3xl">
             {[
-              { icon: <PackageCheck className="w-5 h-5 text-gold" />, texto: `Pedido mínimo de ${PEDIDO_MINIMO} peças` },
+              { icon: <PackageCheck className="w-5 h-5 text-gold" />, texto: `Pedido mínimo de R$ ${PEDIDO_MINIMO_VALOR}` },
               { icon: <Factory className="w-5 h-5 text-gold" />, texto: 'Fabricação própria' },
               { icon: <Shirt className="w-5 h-5 text-gold" />, texto: 'Só bermudas' },
               { icon: <MapPinned className="w-5 h-5 text-gold" />, texto: 'Caruaru-PE p/ todo o Brasil' },
@@ -45,7 +45,7 @@ export default function Catalogo() {
             ))}
           </div>
           <p className="text-muted-foreground text-sm max-w-lg mt-2">
-            Monte seu pedido combinando modelos, cores e tamanhos — o mínimo de {PEDIDO_MINIMO} peças vale pro carrinho todo, não por modelo.
+            Monte seu pedido combinando modelos, cores e tamanhos — o mínimo de R$ {PEDIDO_MINIMO_VALOR} vale pro carrinho todo, não por modelo.
           </p>
         </div>
       </section>

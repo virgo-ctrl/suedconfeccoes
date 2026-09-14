@@ -1,1 +1,1 @@
-export const PEDIDO_MINIMO = 10
+export const PEDIDO_MINIMO_VALOR = 500

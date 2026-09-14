@@ -40,11 +40,11 @@ export function CartDrawer() {
     clearCart,
     totalItens,
     totalValor,
-    pedidoMinimo,
+    pedidoMinimoValor,
   } = useCart()
 
-  const faltam = Math.max(0, pedidoMinimo - totalItens)
-  const podeFinalizar = totalItens >= pedidoMinimo
+  const faltam = Math.max(0, pedidoMinimoValor - totalValor)
+  const podeFinalizar = totalValor >= pedidoMinimoValor
 
   function handleFinalizarPedido() {
     if (!podeFinalizar) return
@@ -165,7 +165,7 @@ export function CartDrawer() {
           <div className="px-5 py-4 border-t border-border flex flex-col gap-3">
             {!podeFinalizar && (
               <p className="text-xs text-center text-muted-foreground bg-secondary rounded-lg px-3 py-2">
-                Pedido mínimo de {pedidoMinimo} peças · faltam {faltam} peça{faltam === 1 ? '' : 's'}
+                Pedido mínimo de R$ {pedidoMinimoValor.toFixed(2).replace('.', ',')} · faltam R$ {faltam.toFixed(2).replace('.', ',')}
               </p>
             )}
 
