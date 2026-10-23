@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { LeadForm } from '@/components/lead-form'
 import { ScrollToTopBtn } from '@/components/scroll-to-top-btn'
 import { CheckCircle2, Package, Truck, Star } from 'lucide-react'
@@ -225,6 +226,12 @@ export default function Home() {
         <p className="text-muted-foreground text-xs text-center">
           © {new Date().getFullYear()} Sued Confecções · Caruaru - PE · Todos os direitos reservados
         </p>
+        <Link
+          href="/politica-de-privacidade"
+          className="text-muted-foreground hover:text-foreground text-xs underline underline-offset-4 transition-colors"
+        >
+          Política de Privacidade
+        </Link>
       </footer>
     </main>
   )
